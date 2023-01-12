@@ -2,12 +2,15 @@ import discord
 import responses
 import roll
 from pymongo_get_database import get_database
+from dotenv import load_dotenv
+import os
+   
+load_dotenv()
 
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
-TOKEN = "MTA2MTYyNjg0NzQ0OTg0OTg5Ng.GNWj6y.QjMHkan78U0r6yctVDvLl-lpsm-Cnbk9eCY420"
-
+TOKEN = os.getenv('TOKEN')
 #Reads the gifs and links values in the db and returns an output string
 def read_db(db):
   mycol = db["Chat"]
